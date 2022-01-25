@@ -1,5 +1,7 @@
 <template>
-  <h1>Administradir</h1>
+  <div>
+      <h2>lista prospet</h2>
+  </div>
 </template>
 
 <script>

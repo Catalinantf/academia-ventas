@@ -86,6 +86,7 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       alert(JSON.stringify(this.form));
+      this.form="";
     },
 
    //limpiar fomulario 

@@ -1,69 +1,57 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import store from '@/store/index';
 
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    redirect: { name: 'Home' }
+const routes = [{
+  path: '/',
+  redirect: { name: 'Home' }
+},
+{
+  path: '/home',
+  name: 'Home',
+  component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue')
+}, 
+{
+  path: '/acceso',
+  name: 'Acceso',
+  component: () => import(/* webpackChunkName: "Acceso" */ '../views/Acceso.vue')
+}, 
+{
+  path: '/administracion',
+  name: 'Administracion',
+  meta: {
+    requiredAuth: true
   },
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue')
+  component: () => import(/* webpackChunkName: "Administracion" */ '../views/Administracion.vue')
+},
+{
+  path: '/editando/:id',
+  props: true,
+  name: 'Editando',
+  meta: {
+    requiredAuth: true
   },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
-  },
-  {
-    path: '/vistaadministrador',
-    name: 'VistaAdministrador',
-    // meta: {
-    //   requiredAuth: true
-    //   },
-    component: () => import(/* webpackChunkName: "VistaAdministrador" */ '../views/VistaAdministrador.vue')
-  },
-  {
-    path: '/vistaestudiante',
-    name: 'VistaEstudiante',
-    component: () => import(/* webpackChunkName: "VistaEstudiante" */ '../views/VistaEstudiante.vue')
-  },
-  {
-    path: '/vistaprofesor',
-    name: 'VistaProfesor',
-    component: () => import(/* webpackChunkName: "VistaProfesor" */ '../views/VistaProfesor.vue')
-  }, {
-    path: '/editando/:id',
-    props: true,
-    name: 'Editando',
-    component: () => import(/* webpackChunkName: "Editando" */
-      '../views/Editando.vue')
-  },
-  {
-    path: '*',
-    redirect: { name: 'Login' }
-  }
-
+  component: () => import(/* webpackChunkName: "Editando" */ '../views/Editando.vue')
+},
+{
+  path: '*',
+  redirect: { name: 'Home' }
+}
 ]
-
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+  base: process.env.BASE_URL, routes
 })
 router.beforeEach((to, from, next) => {
-  // aquí crearemos una variable para guardar los valores que existan del usuario
+  let user = store.getters.enviarUser;
   let requiredAuth = to.matched.some(res => res.meta.requiredAuth);
-  if (requiredAuth) {
-    next({ name: 'Login' });
-  } else if (!requiredAuth) {
+  if (!user && requiredAuth) {
+    next({ name: 'Home' });
+  } else if (user && !requiredAuth) {
     next();
   } else {
     next();
   }
 })
-
 export default router

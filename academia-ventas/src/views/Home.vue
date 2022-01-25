@@ -1,12 +1,12 @@
 <template>
-  <div class="home bg-dark text-white">
+  <div class="home">
     <h2 class="p-5 text-center">Admisión 2022</h2>
     
 
     
     <b-container class="w-50 py-5">
       <h3>¡Te entregamos toda la informacion que necesitas!</h3>
-      <ContactForm />
+      <FormProspectos />
     </b-container>
     <b-container>
     <div class="cards-profesores">
@@ -72,12 +72,12 @@
 
 <script>
 // @ is an alias to /src
-import ContactForm from "@/components/ContactForm.vue";
+import FormProspectos from "@/components/FormProspectos.vue";
 
 export default {
   name: "Home",
   components: {
-    ContactForm,
+    FormProspectos,
   },
 
 };
