@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <h1 class="mt-10">Agrega un nuevo Usuario</h1>
     <div>
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
@@ -43,14 +42,6 @@
             @click="reset"
           >
             Limpiar Formulario
-          </v-btn>
-
-          <v-btn
-            color="warning"
-            class="mt-4 mt-sm-4 mt-md-0 mt-lg-0 mt-xl-0 mx-4"
-            @click="resetValidation"
-          >
-            Limpiar Validación
           </v-btn>
         </v-container>
       </v-form>
@@ -110,11 +101,26 @@ export default {
         });
       }
     },
+      mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch("cargarUsuario", user);
+                Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Ingreso con éxito",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        this.$store.dispatch("cargarUsuario", null);
+      }
+    });
+    this.$store.dispatch("CursosDb");
+    this.$store.dispatch("ProspectosDb");
+  },
     reset() {
       this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
     },
   },
 };

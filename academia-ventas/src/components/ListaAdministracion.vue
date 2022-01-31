@@ -1,8 +1,6 @@
 <template>
   <v-container>
     <div class="my-6 d-flex justify-center">
-      <h2 class="my-2 text-center mx-1 text-h5 text-sm-h2">Administración</h2>
-      <v-spacer></v-spacer>
       <!-- modal para registrar curso -->
       <section class="my-auto">
         <v-dialog v-model="dialog" persistent max-width="600px">
@@ -32,14 +30,6 @@
                     label="URL de la Imagen del curso"
                     required
                     type="url"
-                  ></v-text-field>
-                  <!-- cupos del curso -->
-                  <v-text-field
-                    v-model="cupos"
-                    :rules="cuposRules"
-                    label="Cupos del curso"
-                    required
-                    type="number"
                   ></v-text-field>
                   <!-- inscritos en el curso -->
                   <v-text-field
@@ -191,62 +181,6 @@
         </template>
       </v-data-table>
     </div>
-    <div class="mt-8">
-      <v-alert
-        color="purple"
-        dense
-        elevation="1"
-        icon="mdi-account-group"
-        outlined
-      >
-        Cantidad total de alumnos permitidos:
-        <strong>{{ totalAlumnosPermitidos }}</strong> alumnos
-      </v-alert>
-      <v-alert
-        color="blue"
-        dense
-        elevation="1"
-        icon="mdi-account-multiple-check"
-        outlined
-      >
-        Cantidad total de alumnos inscritos:
-        <strong>{{ totalAlumnosInscritos }}</strong> alumnos
-      </v-alert>
-      <v-alert
-        color="red"
-        dense
-        elevation="1"
-        icon="mdi-account-clock"
-        outlined
-      >
-        Cantidad total de cupos restantes:
-        <strong>{{ cuposRestantes }}</strong> alumnos
-      </v-alert>
-      <v-alert
-        color="pink"
-        dense
-        elevation="1"
-        icon="mdi-block-helper"
-        outlined
-      >
-        Cantidad total de cursos terminados:
-        <strong>{{ totalCursosTerminados }}</strong> cursos.
-      </v-alert>
-      <v-alert color="brown" dense elevation="1" icon="mdi-bell-ring" outlined>
-        Cantidad total de cursos activos:
-        <strong>{{ cursosActivos }}</strong> cursos.
-      </v-alert>
-      <v-alert
-        color="deep-orange"
-        dense
-        elevation="1"
-        icon="mdi-bell-ring"
-        outlined
-      >
-        Cantidad total de cursos:
-        <strong>{{ cantidadTotalCursos }}</strong> cursos.
-      </v-alert>
-    </div>
   </v-container>
 </template>
 
@@ -312,13 +246,9 @@ export default {
   computed: {
     ...mapGetters([
       "enviarCursos",
-      "totalAlumnosPermitidos",
       "totalAlumnosInscritos",
       "totalCursosTerminados",
     ]),
-    cuposRestantes() {
-      return this.totalAlumnosPermitidos - this.totalAlumnosInscritos;
-    },
     cursosActivos() {
       return this.enviarCursos.length - this.totalCursosTerminados;
     },

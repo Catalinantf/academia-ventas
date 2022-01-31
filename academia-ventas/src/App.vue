@@ -25,6 +25,7 @@ export default {
       }
     });
     this.$store.dispatch("CursosDb");
+    this.$store.dispatch("ProspectosDb");
   },
 };
 </script>

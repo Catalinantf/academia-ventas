@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     cursos: [],
+    prospectos: [],
     user: null
   },
   getters: {
@@ -16,9 +17,14 @@ export default new Vuex.Store({
     enviarUser(state) {
       return state.user;
     },
-    totalAlumnosPermitidos(state, getters) {
-      return getters.enviarCursos.map(state => state.cupos).reduce((total, suma) => total + suma, 0);
+    enviarProspectos(state) {
+      return state.prospectos;
     },
+    // buscarPorRut: (state, getters) => (rut) => {
+    //   return getters.enviarProspectos.filter((prospecto) => {
+    //   return prospecto.rut == rut
+    //   })
+    //   },
     totalAlumnosInscritos(state, getters) {
       return getters.enviarCursos.map(state => state.inscritos).reduce((total, suma) => total + suma, 0);
     },
@@ -74,10 +80,11 @@ export default new Vuex.Store({
             name: element.data().name,
             email: element.data().email,
             rut: element.data().rut,
-            edad: element.data().edad,
+            fechanacimiento: element.data().fechanacimiento,
             telefono: element.data().telefono,
             ocupacion: element.data().ocupacion,
-            estado: element.data().estado,
+            matriculado: element.data().matriculado,
+            egresado: element.data().egresado,
             idDoc: element.id,
 
           })

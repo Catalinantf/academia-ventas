@@ -1,29 +1,57 @@
 <template>
-  <div>
-    <BarraNavegacionAdm />
-    <ListaAdministracion />
-    <Registrar />
-    <ListaCursos />
-    <ListaProspectos />
-    
-  </div>
+  <v-card>
+    <v-toolbar color="purple" dark flat>
+      <template>
+        <v-tabs v-model="tabs" centered>
+          <v-tab> Resumen </v-tab>
+          <v-tab> Administración </v-tab>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+    <v-tabs-items v-model="tabs">
+      <v-tab-item>
+        <v-card flat>
+          <v-card-title class="text-h4 text-center"> Resumen </v-card-title>
+          <v-card-text>
+            <ResumenCursos />
+            <ListaCursos />
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat>
+          <v-card-title class="text-h4 text-center"> Administración </v-card-title>
+          <v-card-text>
+            <ListasAcademia />
+          </v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
+  </v-card>
 </template>
+
+
+
 <script>
-import ListaAdministracion from "@/components/ListaAdministracion.vue";
-import Registrar from "@/components/Registrar.vue";
+import ListasAcademia from "@/views/ListasAcademia.vue";
 import ListaCursos from "@/components/ListaCursos.vue";
-import BarraNavegacionAdm from '../components/BarraNavegacionAdm.vue';
-import ListaProspectos from "@/components/ListaProspectos.vue";
+import ResumenCursos from "@/components/ResumenCursos.vue";
 
 export default {
   name: "Administracion",
   components: {
-    ListaAdministracion,
-     ListaCursos,
-    Registrar,
-    BarraNavegacionAdm,
-    ListaProspectos
-    
+    ListasAcademia,
+    ListaCursos,
+    ResumenCursos,
+  },
+  data() {
+    return {
+      tabs: null,
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    };
   },
 };
 </script>
+
+<style>
+</style>
