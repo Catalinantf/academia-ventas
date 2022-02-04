@@ -31,6 +31,14 @@
                     required
                     type="url"
                   ></v-text-field>
+                  <!-- cupos del curso -->
+                  <v-text-field
+                    v-model="cupos"
+                    :rules="cuposRules"
+                    label="Cupos del curso"
+                    required
+                    type="number"
+                  ></v-text-field>
                   <!-- inscritos en el curso -->
                   <v-text-field
                     v-model="inscritos"
@@ -44,14 +52,6 @@
                     v-model="duracion"
                     label="Duración del curso"
                     required
-                  ></v-text-field>
-                  <!-- costo del curso -->
-                  <v-text-field
-                    v-model="costo"
-                    :rules="precioRules"
-                    label="Costo del curso"
-                    required
-                    type="number"
                   ></v-text-field>
                   <!-- codigo del curso -->
                   <v-text-field

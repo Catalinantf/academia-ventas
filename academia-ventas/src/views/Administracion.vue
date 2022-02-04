@@ -33,7 +33,7 @@
 
 
 <script>
-import ListasAcademia from "@/views/ListasAcademia.vue";
+import ListasAcademia from "@/components/ListasAcademia.vue";
 import ListaCursos from "@/components/ListaCursos.vue";
 import ResumenCursos from "@/components/ResumenCursos.vue";
 

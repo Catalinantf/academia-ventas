@@ -1,8 +1,15 @@
 <template>
   <div>
-    <v-app-bar color="deep-purple" dark>
+    <v-app-bar color="white">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-toolbar-title class="cursor">Academia Ventas</v-toolbar-title>
+      <v-app-bar-nav-icon>
+        <v-img
+          src="../assets/49d8b89a-d28f-42e9-8451-978d7a17d88a.png"
+          max-height="40"
+          max-width="40"
+        ></v-img>
+      </v-app-bar-nav-icon>
+      <v-toolbar-title class="cursor"> Academia Ventas </v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="mr-14">
         <v-btn icon v-if="enviarUser" @click="salidaOut">

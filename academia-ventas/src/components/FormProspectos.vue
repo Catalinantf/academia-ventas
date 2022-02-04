@@ -1,6 +1,13 @@
 <template>
-  <v-container>
-    <v-form ref="form" v-model="valid" lazy-validation>
+<div class="success pa-1">
+
+    <h4 class="white--text" >Admisión 2022</h4>
+    <v-container class="red darken-1">
+
+    <h5 class="white--text" >Hola ¡Contáctanos para más info!</h5>
+    </v-container >
+
+    <v-form ref="form" v-model="valid" lazy-validation  class="green lighten-5 pa-3">
       <!-- nombre del Prospecto -->
       <v-text-field
         v-model="name"
@@ -36,7 +43,6 @@
         :rules="telefonoRules"
         label="Teléfono"
         required
-        type="number"
       ></v-text-field>
       <!-- Ocupación del Prospecto -->
       <v-text-field
@@ -64,7 +70,7 @@
         </v-btn>
       </v-container>
     </v-form>
-  </v-container>
+</div>
 </template>
 
 <script>
@@ -93,13 +99,13 @@ export default {
         (v) => !!v || "El Rut es requerido",
         (v) =>
           (v && v.length >= 9 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser numeros",
+          "Ingresa tu RUT completo. Sólo deben ser números",
       ],
       telefonoRules: [
         (v) => !!v || "El número de teléfono es requerido",
         (v) =>
           (v && v.length >= 9 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser números",
+          "Este número telefónico es muy corto",
       ],
 
       dialog: false,
@@ -171,4 +177,5 @@ export default {
 </script>
 
 <style>
+
 </style>

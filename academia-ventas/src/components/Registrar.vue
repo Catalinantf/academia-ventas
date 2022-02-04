@@ -105,13 +105,6 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$store.dispatch("cargarUsuario", user);
-                Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Ingreso con éxito",
-          showConfirmButton: false,
-          timer: 1500,
-        });
       } else {
         this.$store.dispatch("cargarUsuario", null);
       }

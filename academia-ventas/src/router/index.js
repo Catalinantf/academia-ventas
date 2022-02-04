@@ -3,7 +3,8 @@ import VueRouter from 'vue-router';
 import store from '@/store/index';
 
 Vue.use(VueRouter)
-const routes = [{
+const routes = [
+  {
   path: '/',
   redirect: { name: 'Home' }
 },
@@ -37,14 +38,6 @@ const routes = [{
   component: () => import(/* webpackChunkName: "Administracion" */ '../views/Administracion.vue')
 },
 {
-  path: '/listasacademia',
-  name: 'ListasAcademia',
-  meta: {
-    requiredAuth: true
-  },
-  component: () => import(/* webpackChunkName: "ListasAcademia" */ '../views/ListasAcademia.vue')
-},
-{
   path: '/editando/:id',
   props: true,
   name: 'Editando',
@@ -64,7 +57,7 @@ const routes = [{
 },
 {
   path: '*',
-  redirect: { name: 'Home' }
+  redirect: { name: '404' }
 }
 ]
 const router = new VueRouter({
@@ -75,7 +68,7 @@ router.beforeEach((to, from, next) => {
   let user = store.getters.enviarUser;
   let requiredAuth = to.matched.some(res => res.meta.requiredAuth);
   if (!user && requiredAuth) {
-    next({ name: 'Home' });
+    next({ name: 'Administracion' });
   } else if (user && !requiredAuth) {
     next();
   } else {

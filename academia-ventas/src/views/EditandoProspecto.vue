@@ -22,11 +22,9 @@
         ></v-text-field>
         <!-- Rut del Prospecto -->
         <v-text-field
-          v-model="rut"
+          v-model.number="rut"
           :rules="rutRules"
           label="Ingresa tu Rut (sin puntos ni guión)"
-          required
-          type="number"
         ></v-text-field>
         <!-- Fecha de nacimiento -->
         <v-text-field
@@ -37,11 +35,10 @@
         ></v-text-field>
         <!-- Teléfono del Prospecto -->
         <v-text-field
-          v-model="telefono"
+          v-model.number="telefono"
           :rules="telefonoRules"
           label="Teléfono"
           required
-          type="number"
         ></v-text-field>
         <!-- Ocupación del Prospecto -->
         <v-text-field
@@ -139,18 +136,18 @@ export default {
         (v) => !!v || "El correo Electrónico es requerido",
         (v) => /.+@.+\..+/.test(v) || "El correo Electrónico debe ser válido",
       ],
-      rutRules: [
-        (v) => !!v || "El Rut es requerido",
-        (v) =>
-          (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser numeros",
-      ],
-      telefonoRules: [
-        (v) => !!v || "El número de teléfono es requerido",
-        (v) =>
-          (v && v.length >= 9 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser números",
-      ],
+      // rutRules: [
+      //   (v) => !!v || "El Rut es requerido",
+      //   (v) =>
+      //     (v && v.length >= 8) ||
+      //     "Solo deben ser numeros, sin punto ni guión",
+      // ],
+      // telefonoRules: [
+      //   (v) => !!v || "El número de teléfono es requerido",
+      //   (v) =>
+      //     (v && v.length >= 9 && /\d/gim.test(v)) ||
+      //     "Solo deben ser números",
+      // ],
       dialog: false,
       matriculado: false,
       egresado: false,
@@ -166,7 +163,7 @@ export default {
       this.email = prospectoEncontrado.email;
       this.rut = parseInt(prospectoEncontrado.rut);
       this.idDoc = prospectoEncontrado.idDoc;
-      this.telefono = parseFloat(prospectoEncontrado.telefono);
+      this.telefono = parseInt(prospectoEncontrado.telefono);
       this.ocupacion = prospectoEncontrado.ocupacion;
       this.matriculado = prospectoEncontrado.matriculado;
       this.egresado = prospectoEncontrado.egresado;

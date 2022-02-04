@@ -20,13 +20,6 @@
           required
           type="url"
         ></v-text-field>
-        <!-- cupos del curso -->
-        <v-text-field
-          v-model="cupos"
-          :rules="cuposRules"
-          label="Cupos del curso"
-          required
-        ></v-text-field>
         <!-- inscritos en el curso -->
         <v-text-field
           v-model="inscritos"
@@ -40,19 +33,27 @@
           label="Duración del curso"
           required
         ></v-text-field>
-        <!-- costo del curso -->
-        <v-text-field
-          v-model="costo"
-          :rules="costoRules"
-          label="Costo del curso"
-          required
-        ></v-text-field>
         <!-- id del curso -->
         <v-text-field
           v-model="codigo"
           label="Código del curso"
           required
         ></v-text-field>
+        <!-- fecha de registro del curso -->
+        <v-text-field
+          v-model="fecharegistro"
+          label="Fecha de Registro"
+          type="date"
+        ></v-text-field>
+        <!-- estado del curso -->
+        <v-switch
+        class="mb-5"
+          v-model="estado"
+          :label="estado ? 'Terminado: Si' : 'Terminado: No'"
+          color="indigo"
+          :true-value="estado"
+          hide-details
+        ></v-switch>
         <!-- decripcion del curso -->
         <v-textarea
           outlined
@@ -60,21 +61,6 @@
           v-model="descripcion"
         >
         </v-textarea>
-        <!-- fecha de registro del curso -->
-        <v-text-field
-          v-model="fecharegistro"
-          label="Fecha de Registro"
-          required
-          type="date"
-        ></v-text-field>
-        <!-- estado del curso -->
-        <v-switch
-          v-model="estado"
-          :label="estado ? 'Terminado: Si' : 'Terminado: No'"
-          color="indigo"
-          :true-value="estado"
-          hide-details
-        ></v-switch>
 
         <v-container
           class="
@@ -141,30 +127,13 @@ export default {
       codigo: "",
       inscritos: 0,
       descripcion: "",
-      cupos: 0,
-      cuposRules: [
-        (v) => !!v || "Cupos es requerido",
-        (v) =>
-          (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser números positivos",
-      ],
       inscritosRules: [
         (v) => !!v || "La cantidad de Inscritos es requerida",
         (v) =>
           (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
           "Solo deben ser números positivos",
-        (v) =>
-          v <= this.cupos ||
-          "La cantidad de inscritos no puede pasar la cantidad de cupos disponibles",
       ],
       duracion: "",
-      costo: 0,
-      costoRules: [
-        (v) => !!v || "Costo es requerido",
-        (v) =>
-          (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser números positivos",
-      ],
       nombreRules: [
         (v) => !!v || "Name is required",
         (v) =>
@@ -188,14 +157,12 @@ export default {
       (result) => result.idDoc === this.id
     );
     if (cursoEncontrado !== undefined) {
-      this.cupos = parseInt(cursoEncontrado.cupos);
       this.duracion = cursoEncontrado.duracion;
       this.codigo = cursoEncontrado.codigo;
       this.idDoc = cursoEncontrado.idDoc;
       this.imagen = cursoEncontrado.imagen;
       this.descripcion = cursoEncontrado.descripcion;
       this.nombre = cursoEncontrado.nombre;
-      this.costo = parseFloat(cursoEncontrado.costo);
       this.estado = cursoEncontrado.estado;
       this.inscritos = parseInt(cursoEncontrado.inscritos);
       let fecha = cursoEncontrado.fecharegistro.toDate();
@@ -220,8 +187,6 @@ export default {
         let cursoNuevo = {
           nombre: this.nombre,
           codigo: this.codigo,
-          costo: parseFloat(this.costo),
-          cupos: parseInt(this.cupos),
           inscritos: parseInt(this.inscritos),
           imagen: this.imagen,
           duracion: this.duracion,
