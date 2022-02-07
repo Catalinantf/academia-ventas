@@ -1,13 +1,16 @@
 <template>
-<div class="success pa-1">
-
-    <h4 class="white--text" >Admisión 2022</h4>
+  <div class="success pa-1">
+    <h4 class="white--text">Admisión 2022</h4>
     <v-container class="red darken-1">
+      <h5 class="white--text">Hola ¡Contáctanos para más info!</h5>
+    </v-container>
 
-    <h5 class="white--text" >Hola ¡Contáctanos para más info!</h5>
-    </v-container >
-
-    <v-form ref="form" v-model="valid" lazy-validation  class="green lighten-5 pa-3">
+    <v-form
+      ref="form"
+      v-model="valid"
+      lazy-validation
+      class="green lighten-5 pa-3"
+    >
       <!-- nombre del Prospecto -->
       <v-text-field
         v-model="name"
@@ -44,6 +47,9 @@
         label="Teléfono"
         required
       ></v-text-field>
+      <!-- Región del Prospecto -->
+      <v-overflow-btn v-model="region" :rules="regionRules" label="Región">
+      </v-overflow-btn>
       <!-- Ocupación del Prospecto -->
       <v-text-field
         v-model="ocupacion"
@@ -70,11 +76,12 @@
         </v-btn>
       </v-container>
     </v-form>
-</div>
+  </div>
 </template>
 
 <script>
 import Swal from "sweetalert2";
+// import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   name: "FormProspectos",
@@ -85,6 +92,7 @@ export default {
       email: "",
       rut: "",
       telefono: "",
+      región: "",
       ocupacion: "",
       fechanacimiento: "",
       nameRules: [
@@ -107,6 +115,7 @@ export default {
           (v && v.length >= 9 && /\d/gim.test(v) && v >= 0) ||
           "Este número telefónico es muy corto",
       ],
+      regionRules: ['Arial', 'Calibri', 'Courier', 'Verdana'],
 
       dialog: false,
       headers: [
@@ -114,6 +123,7 @@ export default {
         { text: "Email", value: "email" },
         { text: "Rut", value: "rut" },
         { text: "Telefono", value: "telefono" },
+        { text: "Región", value: "region" },
         { text: "Ocupacion", value: "ocupacion" },
         { text: "Matriculado", value: "matriculado" },
         { text: "Egresado", value: "egresado" },
@@ -121,7 +131,7 @@ export default {
       ],
     };
   },
-  
+
   methods: {
     validate() {
       this.$refs.form.validate();
@@ -132,6 +142,7 @@ export default {
           rut: this.rut,
           fechanacimiento: this.fechanacimiento,
           telefono: parseInt(this.telefono),
+          region: this.region,
           ocupacion: this.ocupacion,
           matriculado: false,
           egresado: false,
@@ -171,11 +182,10 @@ export default {
           footer: "Intenta nuevamente",
         });
       }
-    },  
+    },
   },
 };
 </script>
 
 <style>
-
 </style>

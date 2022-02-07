@@ -1,4 +1,5 @@
 <template>
+<div class="red">
   <v-card>
     <v-toolbar color="purple" dark flat>
       <template>
@@ -28,6 +29,7 @@
       </v-tab-item>
     </v-tabs-items>
   </v-card>
+  </div>
 </template>
 
 

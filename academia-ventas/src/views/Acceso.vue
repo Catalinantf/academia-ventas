@@ -1,8 +1,9 @@
 <template>
-  <v-container class="contenedor">
+<div class="black h-100 white--text">
+  <v-container class="contenedor green lighten-4">
     <h1 class="mt-10">Inicio de Sesión</h1>
     <div>
-      <v-form ref="form" v-model="valid" lazy-validation>
+      <v-form ref="form" v-model="valid" class="green lighten-4 pa-4" lazy-validation>
         <v-text-field
           v-model="email"
           :rules="emailRules"
@@ -60,6 +61,7 @@
       </v-form>
     </div>
   </v-container>
+  </div>
 </template>
 
 <script>
