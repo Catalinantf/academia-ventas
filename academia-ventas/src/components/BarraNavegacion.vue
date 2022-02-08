@@ -2,7 +2,7 @@
   <div>
     <v-app-bar color="white">
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-      <v-app-bar-nav-icon>
+      <v-app-bar-nav-icon :to="{ name: 'Home' }">
         <v-img
           src="../assets/49d8b89a-d28f-42e9-8451-978d7a17d88a.png"
           max-height="40"
@@ -41,6 +41,12 @@
             </v-list-item-icon>
             <v-list-item-title>Administracion</v-list-item-title>
           </v-list-item>
+          <v-list-item :to="{ name: 'About' }">
+            <v-list-item-icon>
+              <v-icon>mdi-plus</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Quiénes Somos</v-list-item-title>
+          </v-list-item>
 
           <v-list-item :to="{ name: 'Acceso' }">
             <v-list-item-icon>
@@ -70,6 +76,7 @@ export default {
   computed: {
     ...mapGetters(["enviarUser"]),
   },
+
   methods: {
     salidaOut() {
       firebase

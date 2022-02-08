@@ -1,15 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import vuetify from './plugins/vuetify'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import vuetify from "./plugins/vuetify";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
 Vue.use(BootstrapVue);
-Vue.use(BootstrapVueIcons)
+Vue.use(BootstrapVueIcons);
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(VueAxios, axios);
 // Import the functions you need from the SDKs you need
-import firebase from 'firebase';
+import firebase from "firebase";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,17 +24,17 @@ const firebaseConfig = {
   projectId: "academia-ventas",
   storageBucket: "academia-ventas.appspot.com",
   messagingSenderId: "93649719007",
-  appId: "1:93649719007:web:04bbd3d742c6e4ec9a236a"
+  appId: "1:93649719007:web:04bbd3d742c6e4ec9a236a",
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

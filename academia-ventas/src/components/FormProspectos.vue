@@ -47,9 +47,6 @@
         label="Teléfono"
         required
       ></v-text-field>
-      <!-- Región del Prospecto -->
-      <v-overflow-btn v-model="region" :rules="regionRules" label="Región">
-      </v-overflow-btn>
       <!-- Ocupación del Prospecto -->
       <v-text-field
         v-model="ocupacion"
@@ -92,7 +89,6 @@ export default {
       email: "",
       rut: "",
       telefono: "",
-      región: "",
       ocupacion: "",
       fechanacimiento: "",
       nameRules: [
@@ -115,7 +111,6 @@ export default {
           (v && v.length >= 9 && /\d/gim.test(v) && v >= 0) ||
           "Este número telefónico es muy corto",
       ],
-      regionRules: ['Arial', 'Calibri', 'Courier', 'Verdana'],
 
       dialog: false,
       headers: [
@@ -123,7 +118,6 @@ export default {
         { text: "Email", value: "email" },
         { text: "Rut", value: "rut" },
         { text: "Telefono", value: "telefono" },
-        { text: "Región", value: "region" },
         { text: "Ocupacion", value: "ocupacion" },
         { text: "Matriculado", value: "matriculado" },
         { text: "Egresado", value: "egresado" },
@@ -142,7 +136,6 @@ export default {
           rut: this.rut,
           fechanacimiento: this.fechanacimiento,
           telefono: parseInt(this.telefono),
-          region: this.region,
           ocupacion: this.ocupacion,
           matriculado: false,
           egresado: false,

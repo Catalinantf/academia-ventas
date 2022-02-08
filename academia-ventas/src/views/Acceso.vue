@@ -1,7 +1,7 @@
 <template>
-<div class="black h-100 white--text">
-  <v-container class="contenedor green lighten-4">
-    <h1 class="mt-10">Inicio de Sesión</h1>
+<div class="white--text pt-16 backg">
+  <v-container class="contenedor  white">
+    <h3 class="black--text">Inicio de Sesión</h3>
     <div>
       <v-form ref="form" v-model="valid" class="green lighten-4 pa-4" lazy-validation>
         <v-text-field
@@ -41,22 +41,6 @@
           >
             Iniciar
           </v-btn>
-<!-- 
-          <v-btn
-            color="error"
-            class="mt-4 mt-sm-4 mt-md-1 mt-lg-1 mt-xl-1 mx-4"
-            @click="reset"
-          >
-            Limpiar Formulario
-          </v-btn>
-
-          <v-btn
-            color="warning"
-            class="mt-4 mt-sm-4 mt-md-1 mt-lg-1 mt-xl-1 mx-4"
-            @click="resetValidation"
-          >
-            Limpiar Validación
-          </v-btn> -->
         </v-container>
       </v-form>
     </div>
@@ -114,12 +98,6 @@ export default {
         }); 
       }
     },
-    // reset() {
-    //   this.$refs.form.reset();
-    // },
-    // resetValidation() {
-    //   this.$refs.form.resetValidation();
-    // },
   },
 };
 </script>
@@ -127,5 +105,14 @@ export default {
 <style>
 .contenedor {
   max-width: 35%;
+}
+.backg{
+    background-image: url("../assets/NotFound.png");
+    background-repeat: no-repeat;
+    background-color: black;
+    height: 75vh;
+    width: 100vw;
+    background-size: cover;
+    opacity: 0.9;
 }
 </style>

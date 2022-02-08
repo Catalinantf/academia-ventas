@@ -9,10 +9,10 @@
         </v-tabs>
       </template>
     </v-toolbar>
-    <v-tabs-items v-model="tabs">
-      <v-tab-item>
-        <v-card flat>
-          <v-card-title class="text-h4 text-center"> Resumen </v-card-title>
+    <v-tabs-items v-model="tabs" >
+      <v-tab-item >
+        <v-card flat color="purple lighten-5">
+          <v-card-title class="text-h4 text-center "> Resumen </v-card-title>
           <v-card-text>
             <ResumenCursos />
             <ListaCursos />

@@ -4,7 +4,7 @@
     <v-main>
       <router-view></router-view>
     </v-main>
-     <Footer />
+    <Footer />
   </v-app>
 </template>
 
@@ -17,14 +17,8 @@ export default {
   name: "App",
   components: {
     BarraNavegacion,
-    Footer
+    Footer,
   },
-  created(){
-   this.obtenerRegiones(); 
-  },
-  //   methods: {
-  //   ...mapActions('ubicacion', ['obtenerRegiones']),
-  // },
   mounted() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

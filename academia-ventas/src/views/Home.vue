@@ -117,7 +117,7 @@
                   </small>
                 </b-card-text>
                 <template #footer>
-                  <h6>Secretaría Académica</h6>
+                  <h6>Secretaria Académica</h6>
                 </template>
               </b-card>
             </b-card-group>
@@ -130,8 +130,9 @@
     <div class="red darken-4">
       <b-row class="text-md-center">
         <b-col cols="4"></b-col>
-        <b-col cols="1">
+        <b-col cols="1" >
           <b-icon
+          class="d-none d-md-flex"
             icon="arrow-right"
             animation="cylon"
             variant="success"

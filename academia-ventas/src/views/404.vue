@@ -9,8 +9,8 @@
     export default {
         data(){
             return {
-                titulo: '404',
-                subTitulo: 'Pagina no disponible'
+                titulo: ' Error 404',
+                subTitulo: 'Página no disponible'
             }
         }
     };

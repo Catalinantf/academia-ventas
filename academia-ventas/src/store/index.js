@@ -20,11 +20,6 @@ export default new Vuex.Store({
     enviarProspectos(state) {
       return state.prospectos;
     },
-    // buscarPorRut: (state, getters) => (rut) => {
-    //   return getters.enviarProspectos.filter((prospecto) => {
-    //   return prospecto.rut == rut
-    //   })
-    //   },
     totalAlumnosInscritos(state, getters) {
       return getters.enviarCursos.map(state => state.inscritos).reduce((total, suma) => total + suma, 0);
     },
