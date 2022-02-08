@@ -1,8 +1,8 @@
 <template >
   <div class="black h-100 ">
-    <v-container class="backg">
+    <v-container>
       <v-container class="text-center white--text pt-9 px-16">
-        <div class="red darken-4 pa-9">
+        <v-card class="red darken-4 pa-9">
           <h4>QUIÉNES SOMOS</h4>
           <span>
             Academia de Ventas es una plataforma de crecimiento profesional 100%
@@ -10,16 +10,16 @@
             persona, sin importar clase social, sexo o experiencia previa, puede
             transformarse en la mejor versión de sí mismo rápidamente.
           </span>
-        </div>
-        <div class="green darken-4 pa-9">
+        </v-card>
+        <v-card class="green darken-4 pa-9">
           <h3>MISIÓN</h3>
           <span>
             A través de nuestros programas educativos, iniciativas tecnológicas
             y servicios de consultoría en ventas y marketing logramos que todos
             nuestros clientes puedan vender más, más rápido y con menos estrés.
           </span>
-        </div>
-        <div class="blue darken-4 pa-9">
+        </v-card>
+        <v-card class="blue darken-4 pa-9">
           <h3>VISIÓN</h3>
           <span>
             Aspiramos a revolucionar el modelo educacional actual y la forma de
@@ -31,7 +31,7 @@
             generen una conexión emocional positiva entre ellos y sus clientes
             para ser más rentables, más felices y tener un mayor impacto.
           </span>
-        </div>
+        </v-card>
         <hr />
         <v-container>
           <b-button
@@ -50,17 +50,4 @@
 <script>
 export default {};
 </script>
-<style>
-.backg{
-    background-image: url("../assets/NotFound.png");
-    background-repeat: no-repeat;
-    background-color: black;
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-}
-div{
-    opacity: 0.98;
 
-}
-</style>

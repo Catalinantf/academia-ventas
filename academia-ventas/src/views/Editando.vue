@@ -23,7 +23,6 @@
         <!-- inscritos en el curso -->
         <v-text-field
           v-model="inscritos"
-          :rules="inscritosRules"
           label="Inscritos en el curso"
           required
         ></v-text-field>
@@ -127,12 +126,7 @@ export default {
       codigo: "",
       inscritos: 0,
       descripcion: "",
-      inscritosRules: [
-        (v) => !!v || "La cantidad de Inscritos es requerida",
-        (v) =>
-          (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser números positivos",
-      ],
+
       duracion: "",
       nombreRules: [
         (v) => !!v || "Name is required",
