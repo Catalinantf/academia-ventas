@@ -50,11 +50,9 @@ export default new Vuex.Store({
         let cursosLocal = [];
         result.forEach(element => {
           cursosLocal.push({
-            cupos: element.data().cupos,
             duracion: element.data().duracion,
             imagen: element.data().imagen,
             nombre: element.data().nombre,
-            costo: element.data().costo,
             fecharegistro: element.data().fecharegistro,
             estado: element.data().estado,
             codigo: element.data().codigo,

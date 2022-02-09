@@ -54,17 +54,11 @@
               <v-timeline align-top dense>
                 <v-timeline-item color="deep-purple lighten-1" small>
                   <div>
-                    <div class="font-weight-normal">
-                      Costo: <strong>{{ curso.costo }}</strong>
-                    </div>
                     <div>Duración: {{ curso.duracion }}</div>
                   </div>
                 </v-timeline-item>
                 <v-timeline-item color="green" small>
                   <div>
-                    <div class="font-weight-normal">
-                      Cupos: <strong>{{ curso.cupos }}</strong>
-                    </div>
                     <div>Completado: {{ curso.estado ? "Si" : "No" }}</div>
                   </div>
                 </v-timeline-item>

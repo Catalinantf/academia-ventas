@@ -59,28 +59,12 @@ export default {
       nombre: "",
       imagen: "",
       codigo: "",
-      cupos: 0,
       inscritos: 0,
       duracion: "",
-      costo: 0,
       descripcion: "",
-      cuposRules: [
-        (v) => !!v || "Cupos es requerido",
-        (v) =>
-          (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser numeros positivos",
-      ],
+
       inscritosRules: [
         (v) => !!v || "La cantidad de Inscritos es requerida",
-        (v) =>
-          (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
-          "Solo deben ser numeros positivos",
-        (v) =>
-          v <= this.cupos ||
-          "La cantidad de inscritos no puede pasar la cantidad de cupos disponibles",
-      ],
-      precioRules: [
-        (v) => !!v || "Costo es requerido",
         (v) =>
           (v && v.length >= 0 && /\d/gim.test(v) && v >= 0) ||
           "Solo deben ser numeros positivos",
@@ -96,10 +80,8 @@ export default {
           align: "start",
           value: "nombre",
         },
-        { text: "Cupos", value: "cupos" },
         { text: "Inscritos", value: "inscritos" },
         { text: "Duración", value: "duracion" },
-        { text: "Costo", value: "costo" },
         { text: "Terminado", value: "estado" },
         { text: "Fecha", value: "fecharegistro" },
         { text: "Acciones", value: "acciones" },
@@ -138,8 +120,6 @@ export default {
         let cursoNuevo = {
           nombre: this.nombre,
           codigo: this.codigo,
-          costo: parseFloat(this.costo),
-          cupos: parseInt(this.cupos),
           imagen: this.imagen,
           inscritos: parseInt(this.inscritos),
           duracion: this.duracion,
